@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f0e9">
+  <meta name="description" content="Um quebra-cabeça feito com os retratos da turma.">
+  <title>Quebra-Cabeça dos Amigos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <button class="brand" id="brandButton" type="button" aria-label="Voltar ao início">
+        <span class="brand-mark" aria-hidden="true">Q</span>
+        <span>Quebra-Cabeça <b>/ dos Amigos</b></span>
+      </button>
+
+      <nav class="step-indicator" id="stepIndicator" aria-label="Progresso do jogo">
+        <span class="step-dot active"><b>01</b><em>Início</em></span>
+        <i aria-hidden="true"></i>
+        <span class="step-dot"><b>02</b><em>Amigo</em></span>
+        <i aria-hidden="true"></i>
+        <span class="step-dot"><b>03</b><em>Nível</em></span>
+        <i aria-hidden="true"></i>
+        <span class="step-dot"><b>04</b><em>Partida</em></span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <section class="screen screen-home active" id="homeScreen" aria-labelledby="homeTitle">
+      <div class="hero-copy">
+        <span class="eyebrow"><i></i> Edição n.º 01 — A turma</span>
+        <h1 id="homeTitle">Uma foto.<br><em>Várias peças.</em><br><strong>Muita resenha.</strong></h1>
+        <p>Um pequeno jogo caseiro. Escolha um retrato da turma, embaralhe e monte de volta. Orgulho no final.</p>
+        <div class="hero-actions">
+          <button class="button button-primary button-large" id="startButton" type="button">
+            Começar a jogar <span aria-hidden="true">→</span>
+          </button>
+          <div class="hero-meta"><span>3×3 · 4×4 · 5×5</span><i></i><span>5 amigos</span></div>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="editorial-collage">
+          <div class="collage-grid"></div>
+          <figure class="portrait-main"><img src="imagens/Gabi.png" alt=""></figure>
+          <div class="portrait-puzzle">
+            <span style="--x:0;--y:0"></span><span style="--x:1;--y:0"></span><span style="--x:2;--y:0"></span>
+            <span style="--x:0;--y:1"></span><span class="missing"></span><span style="--x:2;--y:1"></span>
+            <span style="--x:0;--y:2"></span><span style="--x:1;--y:2"></span><span style="--x:2;--y:2"></span>
+          </div>
+          <span class="collage-date">Est. 2026</span>
+          <span class="collage-caption"><b>Fig. 01</b><i></i> Retratos da turma</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen screen-choice" id="friendScreen" aria-labelledby="friendTitle" hidden>
+      <div class="section-heading">
+        <button class="back-link" data-back="home" type="button"><span aria-hidden="true">←</span> Início</button>
+        <span class="eyebrow"><i></i> Passo 01 — Escolha</span>
+        <h2 id="friendTitle">Quem vira <em>quebra-cabeça</em> hoje?</h2>
+        <p>Cinco retratos. Uma decisão importante.</p>
+      </div>
+      <div class="friend-grid" id="friendGrid" role="list"></div>
+    </section>
+
+    <section class="screen screen-choice" id="difficultyScreen" aria-labelledby="difficultyTitle" hidden>
+      <div class="section-heading">
+        <button class="back-link" data-back="friends" type="button"><span aria-hidden="true">←</span> Trocar amigo</button>
+        <span class="eyebrow"><i></i> Passo 02 — Coragem</span>
+        <h2 id="difficultyTitle">Qual o <em>tamanho</em> da grade?</h2>
+        <p>Quanto mais peças, mais teimosia.</p>
+      </div>
+
+      <div class="difficulty-layout">
+        <aside class="selected-friend-card">
+          <span class="card-label">Sua escolha</span>
+          <img id="difficultyPreview" src="" alt="">
+          <div><strong id="difficultyFriendName"></strong><small>Retrato selecionado</small></div>
+        </aside>
+
+        <div class="difficulty-grid" id="difficultyGrid">
+          <button class="difficulty-card" data-size="3" type="button">
+            <span class="difficulty-icon">01</span>
+            <span class="difficulty-copy"><strong>Fácil</strong><small>9 peças. Um aquecimento.</small></span>
+            <span class="difficulty-size">3 × 3</span><span class="difficulty-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="difficulty-card" data-size="4" type="button">
+            <span class="difficulty-icon">02</span>
+            <span class="difficulty-copy"><strong>Médio</strong><small>16 peças. Já dá trabalho.</small></span>
+            <span class="difficulty-size">4 × 4</span><span class="difficulty-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="difficulty-card" data-size="5" type="button">
+            <span class="difficulty-icon">03</span>
+            <span class="difficulty-copy"><strong>Difícil</strong><small>25 peças. Boa sorte.</small></span>
+            <span class="difficulty-size">5 × 5</span><span class="difficulty-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen screen-game" id="gameScreen" aria-labelledby="gameTitle" hidden>
+      <div class="game-header">
+        <div>
+          <button class="back-link" data-back="difficulty" type="button"><span aria-hidden="true">←</span> Mudar nível</button>
+          <h2 id="gameTitle">Montando <em id="gameFriendName"></em></h2>
+          <p>Clique em duas peças para trocar. Ou arraste uma sobre a outra.</p>
+        </div>
+        <div class="game-stats" aria-label="Estatísticas da partida">
+          <div class="stat"><span>Movimentos</span><strong id="moveCount">000</strong></div>
+          <div class="stat"><span>Tempo</span><strong id="timer">00:00</strong></div>
+          <div class="stat"><span>Grade</span><strong id="gridStat">3×3</strong></div>
+        </div>
+      </div>
+
+      <div class="game-layout">
+        <div class="board-column">
+          <div class="board-meta"><span>Tabuleiro</span><span id="boardPieceCount">3×3 · 9 peças</span></div>
+          <div class="puzzle-board" id="puzzleBoard" aria-label="Tabuleiro do quebra-cabeça"></div>
+          <div class="board-meta board-meta-bottom"><span id="boardFigure">Fig. — Retrato</span><span>De memória · sem prévia</span></div>
+        </div>
+
+        <aside class="game-sidebar">
+          <div class="instructions-card">
+            <span class="card-label">Instruções</span>
+            <ol>
+              <li><b>01</b><span>Selecione uma peça e depois outra para trocar.</span></li>
+              <li><b>02</b><span>Ou arraste uma peça sobre a outra.</span></li>
+              <li><b>03</b><span>A referência fica escondida. É de memória.</span></li>
+            </ol>
+          </div>
+          <div class="game-actions">
+            <button class="button button-secondary" id="restartButton" type="button">Reiniciar tabuleiro <span aria-hidden="true">↻</span></button>
+            <button class="button button-ghost" id="changeFriendButton" type="button">Trocar amigo <span aria-hidden="true">→</span></button>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© 2026 — Um jogo caseiro</span>
+    <span>Edição limitada · A turma</span>
+  </footer>
+
+  <div class="modal-backdrop" id="winModal" role="dialog" aria-modal="true" aria-labelledby="winTitle" hidden>
+    <div class="win-modal">
+      <div class="win-portrait"><img id="winPortrait" src="" alt=""></div>
+      <div class="win-content">
+        <span class="eyebrow"><i></i> Missão cumprida</span>
+        <h2 id="winTitle">Você <em>montou.</em></h2>
+        <p id="winMessage"></p>
+        <div class="win-stats">
+          <div><span>Movimentos</span><strong id="finalMoves">0</strong></div>
+          <div><span>Tempo</span><strong id="finalTime">00:00</strong></div>
+        </div>
+        <div class="win-actions">
+          <button class="button button-primary" id="playAgainButton" type="button">Jogar de novo <span aria-hidden="true">↻</span></button>
+          <button class="button button-ghost" id="chooseAnotherButton" type="button">Escolher outro amigo <span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
