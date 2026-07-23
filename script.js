@@ -6,7 +6,8 @@
     { name: "Gabi", image: "imagens/Gabi.png", ratio: 585 / 617 },
     { name: "Henrique", image: "imagens/Henrique.png", ratio: 580 / 592 },
     { name: "Luis", image: "imagens/Luis.png", ratio: 454 / 770 },
-    { name: "TH", image: "imagens/TH.png", ratio: 362 / 359 }
+    { name: "TH", image: "imagens/TH.png", ratio: 362 / 359 },
+    { name: "Maia", image: "imagens/Maia.jpeg", ratio: 1283 / 1558 }
   ];
 
   const screens = {
