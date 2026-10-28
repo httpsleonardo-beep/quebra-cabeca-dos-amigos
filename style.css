@@ -286,7 +286,7 @@ button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
 .friend-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 42px 16px;
   margin-top: 48px;
 }
